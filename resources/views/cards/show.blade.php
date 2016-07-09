@@ -6,14 +6,17 @@
 <ul class="list-group">
 @foreach ($card->notes as $note)
 
-<li class="list-group-item">{{  $note->body }}</li>
+<a href="/notes/{{ $note->id }}/edit"><li class="list-group-item">{{  $note->body }}</li></a>
 
  @endforeach
  </ul>
 
 <h3>Add a New Note</h3>
 
-<form class="" action="/cards/{{ $card->id }}/notes" method="post">
+<form method="POST" action="/cards/{{ $card->id }}/notes" >
+
+{{ csrf_field() }}
+
   <div class="form-group">
     <textarea name="body" rows="3" cols="40" class="form-control"></textarea>
   </div>
