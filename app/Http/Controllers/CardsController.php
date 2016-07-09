@@ -23,4 +23,16 @@ class CardsController extends Controller
 
       return view('cards.show', compact ('card'));
     }
+
+    public function store(Request $request, Card $card){
+      // return $request->all();
+      // return $card;
+      $card = new Card;
+      $card->title = $request->title;
+
+      $card->save();
+
+      return back();
+    }
+
 }
